@@ -21,11 +21,11 @@ public class SimpleCarController : MonoBehaviour {
     public float maxSteeringAngle = 30f;
     public float motorForce = 50f;
     public float brakeForce = 0f;
-
+    public float reverseForce = 10f;
 
     private void FixedUpdate()
     {
-        GetInput();
+       //GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
@@ -38,6 +38,15 @@ public class SimpleCarController : MonoBehaviour {
         isBreaking = Input.GetKey(KeyCode.Space);
     }
 
+    public void setInput(float _horizontalInput, float _verticalInput)
+    {
+        horizontalInput = _horizontalInput;
+        verticalInput = _verticalInput;
+
+    }
+
+
+
     private void HandleSteering()
     {
         steerAngle = maxSteeringAngle * horizontalInput;
@@ -47,6 +56,7 @@ public class SimpleCarController : MonoBehaviour {
 
     private void HandleMotor()
     {
+        float force = (verticalInput==-1f)? reverseForce : motorForce;
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obs
   - Crash
+  - Wall
+  - Parking
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Walls
+  - Parking
   - Pointer
   - Not_In_Minimap
   - Minimap_Layer
