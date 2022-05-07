@@ -9,13 +9,17 @@ public class ParkAgent : Agent
     // Start is called before the first frame update
      [SerializeField] private Transform targetTransform;
      [SerializeField] private SimpleCarController carController;
+     [SerializeField] private Parking parkingSpot;
      private float _horizontalInput = 0f; 
      private float _verticalInput = 0f;
+     private float distance = 0.0f;
 
      public override void OnEpisodeBegin()
-     {
-          transform.position = new Vector3(-53f,0f,-80f);
+     {    AddReward(-1f);
+          transform.position = new Vector3(-5.1f, 0f, -7.32f);
           transform.eulerAngles = new Vector3(0f,90f,0f);
+          parkingSpot.respawn();
+          distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - targetTransform.position.x,2)+Mathf.Pow(transform.position.y - targetTransform.position.y,2)+Mathf.Pow(transform.position.z - targetTransform.position.z,2));
      }
      public override void CollectObservations(VectorSensor sensor)
      {
@@ -46,6 +50,10 @@ public class ParkAgent : Agent
                AddReward(-1f);
                EndEpisode();
           }
+          float tmp = Mathf.Sqrt(Mathf.Pow(transform.position.x - targetTransform.position.x,2)+Mathf.Pow(transform.position.y - targetTransform.position.y,2)+Mathf.Pow(transform.position.z - targetTransform.position.z,2));
+          if(tmp<distance)
+               AddReward(0.01f);
+          distance = tmp;
 
    }
 
@@ -58,9 +66,14 @@ public class ParkAgent : Agent
           }
           else if(collider.gameObject.TryGetComponent<Parking>(out Parking parking)){
                Debug.Log("GG");
-               AddReward(1f);
+               SetReward(1f);
                EndEpisode();
 
+          }
+          else
+          {
+               AddReward(-0.1f);
+               Debug.Log("Uderzyl w cos");
           }
      }
 
