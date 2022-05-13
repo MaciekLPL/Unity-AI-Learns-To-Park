@@ -8,7 +8,7 @@ public class ParkAgent : Agent {
     // Start is called before the first frame update
     [SerializeField] private Transform targetTransform;
     [SerializeField] private SimpleCarController carController;
-    [SerializeField] private Parking parkingSpot;
+    [SerializeField] private EnvironmentManager environmentManager;
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
     private float distance = 0.0f;
@@ -16,7 +16,7 @@ public class ParkAgent : Agent {
     public override void OnEpisodeBegin() {
         transform.position = new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
         transform.eulerAngles = new Vector3(0f, Random.Range(30, 60), 0f);
-        parkingSpot.respawn();
+        environmentManager.respawn();
         distance = Vector3.Distance(transform.position, targetTransform.position);
     }
     public override void CollectObservations(VectorSensor sensor) {
