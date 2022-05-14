@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1652463920",
+        "python_version": "3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Szesny\\Desktop\\Unity-AI-Learns-To-Park\\venv\\Scripts\\mlagents-learn --run-id=C4 --time-scale=1",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.22.3",
+        "end_time_seconds": "1652463983"
+    },
+    "total": 63.0099395,
+    "count": 1,
+    "self": 0.0032999000000017986,
+    "children": {
+        "run_training.setup": {
+            "total": 0.020974700000000013,
+            "count": 1,
+            "self": 0.020974700000000013
+        },
+        "TrainerController.start_learning": {
+            "total": 62.985664899999996,
+            "count": 1,
+            "self": 9.969999999981383e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 62.9855403,
+                    "count": 1,
+                    "self": 62.9855403
+                },
+                "TrainerController._save_models": {
+                    "total": 2.4899999999661304e-05,
+                    "count": 1,
+                    "self": 2.4899999999661304e-05
+                }
+            }
+        }
+    }
+}

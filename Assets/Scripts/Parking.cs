@@ -20,5 +20,8 @@ public class Parking : MonoBehaviour
     public void respawn(Vector3 position)
     {
         this.transform.position = position;
+        if(position.x < 0)
+        this.transform.eulerAngles = new Vector3(0f,180f,0f);
+
     }
 }

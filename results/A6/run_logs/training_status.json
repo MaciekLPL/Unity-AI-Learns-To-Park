@@ -1,0 +1,29 @@
+{
+    "ParkAgent": {
+        "checkpoints": [
+            {
+                "steps": 203161,
+                "file_path": "results\\A6\\ParkAgent\\ParkAgent-203161.onnx",
+                "reward": 476.7666795551777,
+                "creation_time": 1652459334.8519866,
+                "auxillary_file_paths": [
+                    "results\\A6\\ParkAgent\\ParkAgent-203161.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 203161,
+            "file_path": "results\\A6\\ParkAgent.onnx",
+            "reward": 476.7666795551777,
+            "creation_time": 1652459334.8519866,
+            "auxillary_file_paths": [
+                "results\\A6\\ParkAgent\\ParkAgent-203161.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
