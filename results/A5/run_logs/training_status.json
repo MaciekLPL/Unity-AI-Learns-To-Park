@@ -2,22 +2,49 @@
     "ParkAgent": {
         "checkpoints": [
             {
-                "steps": 2576,
-                "file_path": "results\\A5\\ParkAgent\\ParkAgent-2576.onnx",
-                "reward": 2.2231352515518665,
-                "creation_time": 1652457530.4077241,
+                "steps": 499873,
+                "file_path": "results\\A5\\ParkAgent\\ParkAgent-499873.onnx",
+                "reward": -845.4689777919224,
+                "creation_time": 1652538166.521323,
                 "auxillary_file_paths": [
-                    "results\\A5\\ParkAgent\\ParkAgent-2576.pt"
+                    "results\\A5\\ParkAgent\\ParkAgent-499873.pt"
+                ]
+            },
+            {
+                "steps": 820776,
+                "file_path": "results\\A5\\ParkAgent\\ParkAgent-820776.onnx",
+                "reward": -566.8032477696737,
+                "creation_time": 1652539431.037379,
+                "auxillary_file_paths": [
+                    "results\\A5\\ParkAgent\\ParkAgent-820776.pt"
+                ]
+            },
+            {
+                "steps": 999398,
+                "file_path": "results\\A5\\ParkAgent\\ParkAgent-999398.onnx",
+                "reward": -307.1215411424637,
+                "creation_time": 1652540374.0652733,
+                "auxillary_file_paths": [
+                    "results\\A5\\ParkAgent\\ParkAgent-999398.pt"
+                ]
+            },
+            {
+                "steps": 1411085,
+                "file_path": "results\\A5\\ParkAgent\\ParkAgent-1411085.onnx",
+                "reward": -983.0958065986633,
+                "creation_time": 1652542036.6688137,
+                "auxillary_file_paths": [
+                    "results\\A5\\ParkAgent\\ParkAgent-1411085.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2576,
+            "steps": 1411085,
             "file_path": "results\\A5\\ParkAgent.onnx",
-            "reward": 2.2231352515518665,
-            "creation_time": 1652457530.4077241,
+            "reward": -983.0958065986633,
+            "creation_time": 1652542036.6688137,
             "auxillary_file_paths": [
-                "results\\A5\\ParkAgent\\ParkAgent-2576.pt"
+                "results\\A5\\ParkAgent\\ParkAgent-1411085.pt"
             ]
         }
     },

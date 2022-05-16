@@ -2,22 +2,22 @@
     "ParkAgent": {
         "checkpoints": [
             {
-                "steps": 2048,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-2048.onnx",
-                "reward": null,
-                "creation_time": 1652456085.2979603,
+                "steps": 146256,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-146256.onnx",
+                "reward": 67.04193131128947,
+                "creation_time": 1652525202.4882283,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-2048.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-146256.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2048,
+            "steps": 146256,
             "file_path": "results\\A1\\ParkAgent.onnx",
-            "reward": null,
-            "creation_time": 1652456085.2979603,
+            "reward": 67.04193131128947,
+            "creation_time": 1652525202.4882283,
             "auxillary_file_paths": [
-                "results\\A1\\ParkAgent\\ParkAgent-2048.pt"
+                "results\\A1\\ParkAgent\\ParkAgent-146256.pt"
             ]
         }
     },
