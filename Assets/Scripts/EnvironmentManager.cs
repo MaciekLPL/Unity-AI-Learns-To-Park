@@ -43,15 +43,15 @@ public class EnvironmentManager : MonoBehaviour
             float angle = (type<6) ? 90.0f : -90.0f;
             if(dice < 6);
             else if(dice < 25)
-                actors[i]= Instantiate(prefab_car_m1, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[i]= Instantiate(prefab_car_m1, transform.position + new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 44)
-                actors[i]= Instantiate(prefab_car_m2, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[i]= Instantiate(prefab_car_m2, transform.position + new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 63)
-                actors[i]= Instantiate(prefab_car_m3, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[i]= Instantiate(prefab_car_m3, transform.position + new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 82)
-                actors[i]= Instantiate(prefab_car_m4, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[i]= Instantiate(prefab_car_m4, transform.position + new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else 
-                actors[i]= Instantiate(prefab_car_m5, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[i]= Instantiate(prefab_car_m5, transform.position + new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
         }
 
         for(uint i = 0; i<11; i++)
@@ -61,23 +61,23 @@ public class EnvironmentManager : MonoBehaviour
             float angle = (type<6) ? 90.0f : -90.0f;
             if(dice < 6);
             else if(dice < 25)
-                actors[5+i]= Instantiate(prefab_car_m1, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[5+i]= Instantiate(prefab_car_m1, transform.position + new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 44)
-                actors[5+i]= Instantiate(prefab_car_m2, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[5+i]= Instantiate(prefab_car_m2, transform.position + new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 63)
-                actors[5+i]= Instantiate(prefab_car_m3, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);   
+                actors[5+i]= Instantiate(prefab_car_m3, transform.position + new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);   
             else if(dice < 82)
-                actors[5+i]= Instantiate(prefab_car_m4, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
+                actors[5+i]= Instantiate(prefab_car_m4, transform.position + new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else 
-                actors[5+i]= Instantiate(prefab_car_m5, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);  
+                actors[5+i]= Instantiate(prefab_car_m5, transform.position + new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);  
         }
 
         int n = Random.Range(0, 15);
         if(actors[n])
                 Destroy(actors[n]);
          if(n<5)
-            parkingSpot.respawn(new Vector3(xPos[0], yPos, zPos[n]));
+            parkingSpot.respawn(transform.position + new Vector3(xPos[0], yPos, zPos[n]));
          else       
-            parkingSpot.respawn(new Vector3(xPos[1], yPos, zPos[n-5]));
+            parkingSpot.respawn(transform.position + new Vector3(xPos[1], yPos, zPos[n-5]));
     }
 }

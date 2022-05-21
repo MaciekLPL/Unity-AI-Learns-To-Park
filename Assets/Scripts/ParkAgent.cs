@@ -9,22 +9,23 @@ public class ParkAgent : Agent {
     [SerializeField] private Transform targetTransform;
     [SerializeField] private SimpleCarController carController;
     [SerializeField] private EnvironmentManager environmentManager;
+    [SerializeField] private Transform plansza;
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
     private float distance = 0.0f;
 
     public override void OnEpisodeBegin() {
         carController.reset();
-        transform.position = new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
+        transform.position = plansza.position + new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
         transform.eulerAngles = new Vector3(0f, Random.Range(30, 60), 0f);
         environmentManager.respawn();
         distance = Vector3.Distance(transform.position, targetTransform.position);
     }
     public override void CollectObservations(VectorSensor sensor) {
-        sensor.AddObservation(transform.position);
-        sensor.AddObservation(targetTransform.position);
-        sensor.AddObservation(Vector3.Distance(transform.position, targetTransform.position));
-        sensor.AddObservation((targetTransform.position - transform.position).normalized);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(targetTransform.localPosition);
+        sensor.AddObservation(Vector3.Distance(transform.localPosition, targetTransform.localPosition));
+        sensor.AddObservation((targetTransform.localPosition - transform.localPosition).normalized);
         sensor.AddObservation(transform.forward);
     }
     public override void OnActionReceived(ActionBuffers actions) {
