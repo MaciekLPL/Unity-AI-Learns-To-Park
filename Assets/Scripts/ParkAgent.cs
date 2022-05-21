@@ -50,11 +50,24 @@ public class ParkAgent : Agent {
         }
 
         float tmp = Vector3.Distance(transform.position, targetTransform.position);
-        if (tmp < distance)
+        if (tmp < distance || tmp < 0.01f)
             AddReward(1f / MaxStep);
         else
             AddReward(-1f / MaxStep);
         distance = tmp;
+
+
+        if (Mathf.Abs(carController.getVelocity()) < 0.1f) {
+
+            float angle = transform.forward.y - targetTransform.forward.y;
+            if (angle > 180f)
+                angle = 360f - angle;
+
+            float reward = (1f / MaxStep) * (MaxStep - StepCount) + (1f / (1f + angle));
+            AddReward(reward);
+            EndEpisode();
+
+        }
 
     }
 
@@ -62,8 +75,11 @@ public class ParkAgent : Agent {
         
         if (collider.gameObject.TryGetComponent<Parking>(out Parking parking)) {
             Debug.Log("Parking");
+            
+            //do wywalenia
             AddReward(1f);
             EndEpisode();
+            //
         } else {
             Debug.Log("Kolizja");
             AddReward(-1f);

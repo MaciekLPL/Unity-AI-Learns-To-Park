@@ -90,4 +90,10 @@ public class SimpleCarController : MonoBehaviour {
         trans.rotation = rot;
         trans.position = pos;
     }
+
+    public float getVelocity() {
+        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        return rb.velocity.magnitude;
+    }
 }
