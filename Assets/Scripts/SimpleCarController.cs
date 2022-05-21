@@ -22,19 +22,16 @@ public class SimpleCarController : MonoBehaviour {
     public float motorForce = 50f;
     public float brakeForce = 0f;
     public float reverseForce = 10f;
-    public Rigidbody rb;  
-    public bool debug = false;
+
     private void FixedUpdate()
     {
        //GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        if(debug)
-            Debug.Log( getVelocity() );
     }
 
-    public void GetInput()
+    private void GetInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -48,7 +45,14 @@ public class SimpleCarController : MonoBehaviour {
 
     }
 
+    public void reset() {
 
+        frontLeftWheelCollider.brakeTorque = Mathf.Infinity;
+        frontRightWheelCollider.brakeTorque = Mathf.Infinity;
+        rearLeftWheelCollider.brakeTorque = Mathf.Infinity;
+        rearRightWheelCollider.brakeTorque = Mathf.Infinity;
+
+    }
 
     private void HandleSteering()
     {
@@ -86,16 +90,4 @@ public class SimpleCarController : MonoBehaviour {
         trans.rotation = rot;
         trans.position = pos;
     }
-    public void reset()
-    {
-        frontLeftWheelCollider.brakeTorque = Mathf.Infinity;
-        frontRightWheelCollider.brakeTorque = Mathf.Infinity;
-        rearLeftWheelCollider.brakeTorque = Mathf.Infinity;
-        rearRightWheelCollider.brakeTorque = Mathf.Infinity;
-    }
-    public float getVelocity()
-    {
-        return rb.velocity.magnitude;
-    }
-
 }

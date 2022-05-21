@@ -41,7 +41,7 @@ public class EnvironmentManager : MonoBehaviour
             int dice = Random.Range(1, 100);
             int type = Random.Range(1, 10);
             float angle = (type<6) ? 90.0f : -90.0f;
-            if(dice < 6) /**/;
+            if(dice < 6);
             else if(dice < 25)
                 actors[i]= Instantiate(prefab_car_m1, new Vector3(xPos[0],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 44)
@@ -59,7 +59,7 @@ public class EnvironmentManager : MonoBehaviour
             int dice = Random.Range(1, 100);
             int type = Random.Range(1, 10);
             float angle = (type<6) ? 90.0f : -90.0f;
-            if(dice < 6) /**/;
+            if(dice < 6);
             else if(dice < 25)
                 actors[5+i]= Instantiate(prefab_car_m1, new Vector3(xPos[1],0f,zPos[i]), Quaternion.Euler(0, angle, 0), this.transform);
             else if(dice < 44)
