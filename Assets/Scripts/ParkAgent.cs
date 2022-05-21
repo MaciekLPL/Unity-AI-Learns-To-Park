@@ -56,18 +56,24 @@ public class ParkAgent : Agent {
             AddReward(-1f / MaxStep);
         distance = tmp;
 
+        
 
-        if (Mathf.Abs(carController.getVelocity()) < 0.1f) {
 
-            float angle = transform.forward.y - targetTransform.forward.y;
-            if (angle > 180f)
-                angle = 360f - angle;
+        if (Mathf.Abs(carController.getVelocity()) < 0.1f && tmp < 0.01f) {
 
-            float reward = (1f / MaxStep) * (MaxStep - StepCount) + (1f / (1f + angle));
+            float direction = Mathf.Abs(Vector3.Dot(transform.forward, targetTransform.forward));
+            float reward = ((1f / MaxStep) * (MaxStep - StepCount)) + direction;
             AddReward(reward);
             EndEpisode();
 
         }
+    }
+
+    public override void Heuristic(in ActionBuffers actionsOut) {
+
+        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        discreteActions[0] = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
+        discreteActions[1] = Mathf.CeilToInt(Input.GetAxis("Vertical"));
 
     }
 
@@ -77,8 +83,8 @@ public class ParkAgent : Agent {
             Debug.Log("Parking");
             
             //do wywalenia
-            AddReward(1f);
-            EndEpisode();
+            //AddReward(1f);
+            //EndEpisode();
             //
         } else {
             Debug.Log("Kolizja");

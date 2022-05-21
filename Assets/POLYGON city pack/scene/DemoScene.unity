@@ -12743,6 +12743,7 @@ GameObject:
   - component: {fileID: 1646982256627252}
   - component: {fileID: 1646982256627255}
   - component: {fileID: 8058974879768760570}
+  - component: {fileID: 8058974879768760571}
   m_Layer: 0
   m_Name: Police_car
   m_TagString: Untagged
@@ -12806,7 +12807,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 2ce816bbe7090e341bcd822de35d6719, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: ParkAgent
@@ -13313,3 +13314,15 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+--- !u!114 &8058974879768760571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646982256627251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821995411194dcc4f9442c2b79983149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
