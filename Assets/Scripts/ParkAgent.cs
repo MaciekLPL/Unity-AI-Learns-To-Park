@@ -10,16 +10,21 @@ public class ParkAgent : Agent {
     [SerializeField] private SimpleCarController carController;
     [SerializeField] private EnvironmentManager environmentManager;
     [SerializeField] private Transform plansza;
+    [SerializeField] private GameObject colorTile;
     private float _horizontalInput = 0f;
     private float _verticalInput = 0f;
     private float distance = 0.0f;
+    private bool touchParkingBefore = false;
+    [SerializeField] private bool debugMe = false;
 
     public override void OnEpisodeBegin() {
+        touchParkingBefore =false;
         carController.reset();
         transform.position = plansza.position + new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
         transform.eulerAngles = new Vector3(0f, Random.Range(30, 60), 0f);
         environmentManager.respawn();
         distance = Vector3.Distance(transform.position, targetTransform.position);
+
     }
     public override void CollectObservations(VectorSensor sensor) {
         sensor.AddObservation(transform.localPosition);
@@ -27,6 +32,7 @@ public class ParkAgent : Agent {
         sensor.AddObservation(Vector3.Distance(transform.localPosition, targetTransform.localPosition));
         sensor.AddObservation((targetTransform.localPosition - transform.localPosition).normalized);
         sensor.AddObservation(transform.forward);
+        sensor.AddObservation(carController.getVelocity());
     }
     public override void OnActionReceived(ActionBuffers actions) {
 
@@ -44,29 +50,32 @@ public class ParkAgent : Agent {
         carController.setInput(_horizontalInput, _verticalInput);
         
         if (transform.eulerAngles.z >= 45f && transform.eulerAngles.z <= 315f) {
-            Debug.Log("Wywalil sie:" + transform.eulerAngles.z);
+
             AddReward(-1f);
+                    colorTile.GetComponent<Renderer>().material.color = Color.yellow;
             EndEpisode();
         }
 
         float tmp = Vector3.Distance(transform.position, targetTransform.position);
-        if (tmp < distance || tmp < 0.01f)
+        if (tmp < distance || tmp < 0.5f)
             AddReward(1f / MaxStep);
         else
             AddReward(-1f / MaxStep);
         distance = tmp;
-
-        
-
-
-        if (Mathf.Abs(carController.getVelocity()) < 0.1f && tmp < 0.01f) {
+        if(debugMe)
+            Debug.Log($"{Mathf.Abs(carController.getVelocity())}v : {tmp}d");
+        if (Mathf.Abs(carController.getVelocity()) < 0.1f && tmp < 0.6f) {
 
             float direction = Mathf.Abs(Vector3.Dot(transform.forward, targetTransform.forward));
             float reward = ((1f / MaxStep) * (MaxStep - StepCount)) + direction;
+            Debug.Log("Sukces");
             AddReward(reward);
+                    colorTile.GetComponent<Renderer>().material.color = Color.green;
             EndEpisode();
 
         }
+        if(StepCount>=2000 &&(colorTile.GetComponent<Renderer>().material.color == Color.red ||touchParkingBefore==false))
+        colorTile.GetComponent<Renderer>().material.color = Color.gray;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut) {
@@ -80,14 +89,20 @@ public class ParkAgent : Agent {
     private void OnTriggerEnter(Collider collider) {
         
         if (collider.gameObject.TryGetComponent<Parking>(out Parking parking)) {
-            Debug.Log("Parking");
+            if(touchParkingBefore==false)
+            {
+                Debug.Log("Parking");
+                touchParkingBefore=true;
+                AddReward(1f);
+                colorTile.GetComponent<Renderer>().material.color = Color.magenta;
+            }
             
             //do wywalenia
             //AddReward(1f);
             //EndEpisode();
             //
         } else {
-            Debug.Log("Kolizja");
+            colorTile.GetComponent<Renderer>().material.color = Color.red;
             AddReward(-1f);
             EndEpisode();
         }
