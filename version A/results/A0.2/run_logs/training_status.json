@@ -1,0 +1,65 @@
+{
+    "ParkAgent": {
+        "checkpoints": [
+            {
+                "steps": 29999990,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-29999990.onnx",
+                "reward": 2.6821089854111544,
+                "creation_time": 1653767044.6889257,
+                "auxillary_file_paths": [
+                    "results\\A1\\ParkAgent\\ParkAgent-29999990.pt"
+                ]
+            },
+            {
+                "steps": 30499938,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-30499938.onnx",
+                "reward": 2.7255942348606332,
+                "creation_time": 1653767368.956495,
+                "auxillary_file_paths": [
+                    "results\\A1\\ParkAgent\\ParkAgent-30499938.pt"
+                ]
+            },
+            {
+                "steps": 30999952,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-30999952.onnx",
+                "reward": 2.750120048387063,
+                "creation_time": 1653767699.163935,
+                "auxillary_file_paths": [
+                    "results\\A1\\ParkAgent\\ParkAgent-30999952.pt"
+                ]
+            },
+            {
+                "steps": 31499979,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-31499979.onnx",
+                "reward": 2.7475615032187335,
+                "creation_time": 1653768032.0744584,
+                "auxillary_file_paths": [
+                    "results\\A1\\ParkAgent\\ParkAgent-31499979.pt"
+                ]
+            },
+            {
+                "steps": 31782157,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-31782157.onnx",
+                "reward": 2.7531295411470458,
+                "creation_time": 1653768228.4784577,
+                "auxillary_file_paths": [
+                    "results\\A1\\ParkAgent\\ParkAgent-31782157.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 31782157,
+            "file_path": "results\\A1\\ParkAgent.onnx",
+            "reward": 2.7531295411470458,
+            "creation_time": 1653768228.4784577,
+            "auxillary_file_paths": [
+                "results\\A1\\ParkAgent\\ParkAgent-31782157.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -1,0 +1,4 @@
+cd C:\Users\Szesny\Desktop\Projekty\BMMSI\Unity-AI-Learns-To-Park
+mlagents-learn config\ParkAgent.yaml --run-id=A1 --resume
+
+tensorboard --logdir results --port 6006
