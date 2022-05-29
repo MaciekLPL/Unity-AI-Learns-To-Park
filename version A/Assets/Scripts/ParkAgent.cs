@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using TMPro;
 public class ParkAgent : Agent {
     // Start is called before the first frame update
     [SerializeField] private Transform targetTransform;
@@ -17,11 +18,21 @@ public class ParkAgent : Agent {
     private bool touchParkingBefore = false;
     [SerializeField] private bool debugMe = false;
 
+
+    public Manager manager;
+
+
+
     public override void OnEpisodeBegin() {
+        manager.iteration++;
+
+
+
         touchParkingBefore =false;
         carController.reset();
-        transform.position = plansza.position + new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
-        transform.eulerAngles = new Vector3(0f, Random.Range(30, 60), 0f);
+        transform.position = plansza.position + new Vector3(Random.Range(-11, -1), 0, Random.Range(-11, -1));
+
+        transform.eulerAngles = new Vector3(0f, Random.Range(0, 360), 0f);
         environmentManager.respawn();
         distance = Vector3.Distance(transform.position, targetTransform.position);
 
@@ -52,7 +63,7 @@ public class ParkAgent : Agent {
         if (transform.eulerAngles.z >= 45f && transform.eulerAngles.z <= 315f) {
 
             AddReward(-1f);
-                    colorTile.GetComponent<Renderer>().material.color = Color.yellow;
+                    colorTile.GetComponent<Renderer>().material.color = Color.red;
             EndEpisode();
         }
 
@@ -62,6 +73,7 @@ public class ParkAgent : Agent {
         else if(tmp < 0.5f) {}
         else
             AddReward(-1f / MaxStep);
+            
         distance = tmp;
 
         float direction = Mathf.Abs(Vector3.Dot(transform.forward, targetTransform.forward));
@@ -72,21 +84,25 @@ public class ParkAgent : Agent {
         //     Debug.Log($"{Mathf.Abs(carController.getVelocity())}v : {tmp}d");
 
         float maxAngle = 3f;
-        if (Mathf.Abs(carController.getVelocity()) < 0.05f && tmp < 0.1f && angle < maxAngle) 
+        float maxDistance = 0.1f;
+        float maxSpeed = 0.05f;
+        float speed = Mathf.Abs(carController.getVelocity());
+        if ((speed < maxSpeed) && (distance < maxDistance) && (angle < maxAngle)) 
         
         {
-            float angleReward =  1f- (direction/maxAngle)*0.5f;
+            float angleReward =  1f- (angle/maxAngle)*0.5f;
 
             float distanceReward = (1f - ((float)StepCount/(float)MaxStep));
             float reward =  distanceReward + angleReward;
             
-            Debug.Log("Sukces");
+            //Debug.Log("Sukces");
+            manager.success++;
             AddReward(reward);
                     colorTile.GetComponent<Renderer>().material.color = Color.green;
             EndEpisode();
 
         }
-        if(StepCount>=2000 &&(colorTile.GetComponent<Renderer>().material.color == Color.red ||touchParkingBefore==false))
+        if(StepCount>=250 &&(colorTile.GetComponent<Renderer>().material.color != Color.yellow ||touchParkingBefore==false))
         colorTile.GetComponent<Renderer>().material.color = Color.gray;
     }
 
@@ -103,16 +119,20 @@ public class ParkAgent : Agent {
         if (collider.gameObject.TryGetComponent<Parking>(out Parking parking)) {
             if(touchParkingBefore==false)
             {
-                Debug.Log("Parking");
+                //Debug.Log("Parking");
                 touchParkingBefore=true;
                 AddReward(1f);
-                colorTile.GetComponent<Renderer>().material.color = Color.magenta;
+            }
+            else
+            {
+                colorTile.GetComponent<Renderer>().material.color = Color.yellow;
             }
             
         } else {
-            Debug.Log("Kolizja");
+           // Debug.Log("Kolizja");
             colorTile.GetComponent<Renderer>().material.color = Color.red;
             AddReward(-1f);
+            manager.collision++;
             EndEpisode();
         }
     }
