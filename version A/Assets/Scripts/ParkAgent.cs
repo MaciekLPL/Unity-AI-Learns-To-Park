@@ -67,14 +67,13 @@ public class ParkAgent : Agent {
             EndEpisode();
         }
 
-        float tmp = Vector3.Distance(transform.position, targetTransform.position);
-        if (tmp < distance)
-            AddReward(1f / MaxStep);
-        else if(tmp < 0.5f) {}
-        else
-            AddReward(-1f / MaxStep);
-            
-        distance = tmp;
+        distance = Vector3.Distance(transform.position, targetTransform.position);
+        // if (tmp < distance)
+        //     AddReward(1f / MaxStep);
+        // else if(tmp < 0.5f) {}
+        // else
+        //     AddReward(-1f / MaxStep);
+
 
         float direction = Mathf.Abs(Vector3.Dot(transform.forward, targetTransform.forward));
         float angle = 90f - 90f*direction; 
@@ -91,9 +90,9 @@ public class ParkAgent : Agent {
         
         {
             float angleReward =  1f- (angle/maxAngle)*0.5f;
-
-            float distanceReward = (1f - ((float)StepCount/(float)MaxStep));
-            float reward =  distanceReward + angleReward;
+            float distanceReward = 1f;
+            float parked = 1f;
+            float reward =  parked + distanceReward + angleReward;
             
             //Debug.Log("Sukces");
             manager.success++;
@@ -121,7 +120,7 @@ public class ParkAgent : Agent {
             {
                 //Debug.Log("Parking");
                 touchParkingBefore=true;
-                AddReward(1f);
+                //AddReward(1f);
             }
             else
             {
