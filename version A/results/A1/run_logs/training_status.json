@@ -2,58 +2,58 @@
     "ParkAgent": {
         "checkpoints": [
             {
-                "steps": 79499574,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-79499574.onnx",
-                "reward": 2.4439572821492734,
-                "creation_time": 1653851822.7170355,
+                "steps": 98499905,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-98499905.onnx",
+                "reward": 2.8867135047912598,
+                "creation_time": 1654421754.1231601,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-79499574.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-98499905.pt"
                 ]
             },
             {
-                "steps": 79999828,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-79999828.onnx",
-                "reward": 2.702208637212745,
-                "creation_time": 1653852143.224276,
+                "steps": 98999999,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-98999999.onnx",
+                "reward": 2.6194413068682647,
+                "creation_time": 1654422086.5771937,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-79999828.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-98999999.pt"
                 ]
             },
             {
-                "steps": 80499977,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-80499977.onnx",
-                "reward": 2.6279131582101125,
-                "creation_time": 1653852463.0621614,
+                "steps": 99499993,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-99499993.onnx",
+                "reward": 2.820291072484993,
+                "creation_time": 1654422418.8917835,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-80499977.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-99499993.pt"
                 ]
             },
             {
-                "steps": 80999784,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-80999784.onnx",
-                "reward": 2.6337882246977338,
-                "creation_time": 1653852784.915109,
+                "steps": 99999520,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-99999520.onnx",
+                "reward": 2.756826091806094,
+                "creation_time": 1654422746.4676285,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-80999784.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-99999520.pt"
                 ]
             },
             {
-                "steps": 81063316,
-                "file_path": "results\\A1\\ParkAgent\\ParkAgent-81063316.onnx",
-                "reward": 2.674478530883789,
-                "creation_time": 1653852838.5783598,
+                "steps": 100000320,
+                "file_path": "results\\A1\\ParkAgent\\ParkAgent-100000320.onnx",
+                "reward": 2.7499025397280934,
+                "creation_time": 1654422746.577335,
                 "auxillary_file_paths": [
-                    "results\\A1\\ParkAgent\\ParkAgent-81063316.pt"
+                    "results\\A1\\ParkAgent\\ParkAgent-100000320.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 81063316,
+            "steps": 100000320,
             "file_path": "results\\A1\\ParkAgent.onnx",
-            "reward": 2.674478530883789,
-            "creation_time": 1653852838.5783598,
+            "reward": 2.7499025397280934,
+            "creation_time": 1654422746.577335,
             "auxillary_file_paths": [
-                "results\\A1\\ParkAgent\\ParkAgent-81063316.pt"
+                "results\\A1\\ParkAgent\\ParkAgent-100000320.pt"
             ]
         }
     },
